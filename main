@@ -1,7 +1,6 @@
-#import design  # Это наш конвертированный файл дизайна
+#import design
 from PyQt5 import QtWidgets
 
-# Импортируем наш шаблон.
 from design import Ui_MainWindow
 import sys
 import cv2
@@ -138,7 +137,6 @@ class mywindow(QtWidgets.QMainWindow):
         super(mywindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        # подключение клик-сигнал к слоту btnClicked
         self.ui.pushButton.clicked.connect(self.btnClicked)
 
     def btnClicked(self):
@@ -150,4 +148,4 @@ app = QtWidgets.QApplication([])
 application = mywindow()
 application.show()
 
-sys.exit(app.exec())  # то запускаем функцию main()
+sys.exit(app.exec())
