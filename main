@@ -1,4 +1,4 @@
-#import design
+
 from PyQt5 import QtWidgets
 
 from design import Ui_MainWindow
@@ -123,29 +123,28 @@ def hand():
                         for hand_landmarks in results.multi_hand_landmarks:
                             s = str(hand_landmarks)
                             f(s)
-                            mp_drawing.draw_landmarks(
-                                image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
-                            image = cv2.resize(image, (1200, 850), cv2.INTER_NEAREST)
 
-                            cv2.imshow('Image', image)
-                            if cv2.waitKey(5) & 0xFF == 27:
-                                break
-    cap.release()
 
+import webbrowser
 class mywindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(mywindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        # подключение клик-сигнал к слоту btnClicked
         self.ui.pushButton.clicked.connect(self.btnClicked)
+        self.ui.pushButton_2.clicked.connect(self.btnClicked1)
 
     def btnClicked(self):
         print("123")
         hand()
+
+    def btnClicked1(self):
+        webbrowser.open("https://zayez261.wixsite.com/zhest")
 
 
 app = QtWidgets.QApplication([])
 application = mywindow()
 application.show()
 
-sys.exit(app.exec())
+sys.exit(app.exec())  # то запускаем функцию main()
